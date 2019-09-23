@@ -1,4 +1,4 @@
-﻿room = game.createRoom("room", "배경-1.png")
+room = game.createRoom("room", "배경-1.png")
 room2 = game.createRoom("room2", "배경-4.png")
 
 // room
@@ -101,9 +101,43 @@ room.book.onClick = function(){
 }
 
 //room2
+//오대수의 침대
 room2.sofa = room2.createObject("sofa", "소파-좌.png")
-room2.sofa.setWidth("150")
-room2.locateObject(room.sofa, 1049, 300)
+room2.sofa.setWidth(600)
+room2.locateObject(room2.sofa, 200, 400)
+
+//room2 문 
+room2.door = room2.createObject("door", "문-오른쪽-열림.png") // 문 생성
+room2.door.setWidth(136) // 크기 조절
+room2.locateObject(room2.door, 1049, 305) // 문 배치
+room2.door.open() // door 상태를 opened로 변경
+
+room2.door.onClick = function(){
+	game.move(room) // room으로 이동
+}
+
+//room2 TV다이
+room2.shell = room2.createObject("shell", "교탁-오른쪽.png")
+room2.shell.setWidth(300)
+room2.locateObject(room2.shell,720,370)
+
+//room2 TV
+room2.tv = room2.createObject("tv", "TV-오른쪽.png")
+room2.tv.setWidth(200)
+room2.locateObject(room2.tv, 730,225)
+
+// 힌트용 선반 생성
+room2.shelf = room2.createObject("shelf", "선반-좌.png")
+room2.shelf.setWidth(460)
+room2.locateObject(room2.shelf, 250, 150)
+
+// 힌트용 책 생성
+room2.book2 = room2.createObject("book2", "책3-1.png")
+room2.book2.setWidth(80)
+room2.locateObject(room2.book2, 100, 140)
+room2.book2.onClick = function(){
+    showImageViewer("종이.png", "room2.txt")
+}
 
 game.start(room)
 printMessage("방탈출에 오신 것을 환영합니다!")
